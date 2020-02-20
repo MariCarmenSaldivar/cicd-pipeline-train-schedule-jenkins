@@ -1,7 +1,10 @@
 plugins {
   //inlude the nodeJS plugin to execute nodejs and npm tasks
-  id "com.moowork.node" version "1.3.1"
+  //id "com.moowork.node" version "1.3.1"
+    id "com.github.node-gradle.gulp" version "1.3.0"
 }
+
+apply plugin: 'com.github.node-gradle.gulp'
 
 node {
 	download = true
