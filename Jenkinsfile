@@ -14,6 +14,7 @@ pipeline {
             }
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'stagingserver', keyFileVariable: 'KEY', usernameVariable:'USERNAME')]){
+                    echo '$KEY'
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
