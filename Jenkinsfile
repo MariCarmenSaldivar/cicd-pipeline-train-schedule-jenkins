@@ -20,7 +20,11 @@ pipeline {
                         continueOnError: false,
                         publishers: [
                             sshPublisherDesc(
-                                configName: 'staging',                               
+                                  configName: 'staging',
+                                  sshCredentials: [
+                                    username: "$USERNAME",
+                                    key: "$KEY"
+                                ],                               
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: 'dist/trainSchedule.zip',
