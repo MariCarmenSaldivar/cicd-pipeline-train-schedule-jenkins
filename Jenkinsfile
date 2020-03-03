@@ -14,15 +14,17 @@ pipeline {
             }
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'stagingserver', keyFileVariable: 'KEY', usernameVariable:'USERNAME')]){
+                    echo "$KEY"
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
                         publishers: [
                             sshPublisherDesc(
-                                configName: 'staging',
-                                sshCredentials: [
+                                  configName: 'staging',
+                                  sshCredentials: [
+                                    username: "$USERNAME",
                                     key: "$KEY"
-                                ],
+                                ],                               
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: 'dist/trainSchedule.zip',
